@@ -12,20 +12,27 @@
     uploadedFile: null,
   };
 
-  // Screen progression for automatic path
-  const autoFlow = ['hook', 'segmentacao', 'filtro', 'upload', 'scan', 'diagnostico', 'comofunciona', 'oferta', 'form', 'pagamento'];
+  // Screen progression:
+  // hook → id-nome → id-whatsapp → id-cnh → id-alerta → id-proprietario → id-condutor
+  // → filtro → (humano | segmentacao) → upload → scan → diagnostico → comofunciona → oferta → form → pagamento
   const progressMap = {
-    hook: 0,
-    segmentacao: 10,
-    filtro: 20,
-    humano: 35,
-    upload: 35,
-    scan: 45,
-    diagnostico: 55,
-    comofunciona: 65,
-    oferta: 75,
-    form: 88,
-    pagamento: 100,
+    'hook': 0,
+    'id-nome': 5,
+    'id-whatsapp': 10,
+    'id-cnh': 16,
+    'id-alerta': 22,
+    'id-proprietario': 28,
+    'id-condutor': 34,
+    'filtro': 40,
+    'humano': 45,
+    'segmentacao': 48,
+    'upload': 55,
+    'scan': 62,
+    'diagnostico': 70,
+    'comofunciona': 78,
+    'oferta': 84,
+    'form': 92,
+    'pagamento': 100,
   };
 
   // --- DOM Cache ---
@@ -54,37 +61,112 @@
     progressFill.style.width = pct + '%';
 
     const labels = {
-      hook: 'Início',
-      segmentacao: 'Etapa 1 de 7',
-      filtro: 'Etapa 2 de 7',
-      humano: 'Atendimento Especial',
-      upload: 'Etapa 3 de 7',
-      scan: 'Analisando...',
-      diagnostico: 'Etapa 4 de 7',
-      comofunciona: 'Etapa 5 de 7',
-      oferta: 'Etapa 6 de 7',
-      form: 'Etapa 7 de 7',
-      pagamento: 'Finalização',
+      'hook': 'Início',
+      'id-nome': 'Etapa 1 de 11',
+      'id-whatsapp': 'Etapa 2 de 11',
+      'id-cnh': 'Etapa 3 de 11',
+      'id-alerta': 'Importante',
+      'id-proprietario': 'Etapa 4 de 11',
+      'id-condutor': 'Etapa 5 de 11',
+      'filtro': 'Etapa 6 de 11',
+      'humano': 'Atendimento Especial',
+      'segmentacao': 'Etapa 7 de 11',
+      'upload': 'Etapa 8 de 11',
+      'scan': 'Analisando...',
+      'diagnostico': 'Etapa 9 de 11',
+      'comofunciona': 'Etapa 10 de 11',
+      'oferta': 'Etapa 11 de 11',
+      'form': 'Seus Dados',
+      'pagamento': 'Finalização',
     };
 
     progressText.textContent = labels[screenId] || '';
   }
 
-  // --- Hook Screen ---
+  // === BLOCO 1: IDENTIFICAÇÃO ===
+
+  // --- Hook → Nome ---
   $('#btn-start').addEventListener('click', () => {
-    showScreen('segmentacao');
+    showScreen('id-nome');
   });
 
-  // --- Segmentação ---
-  $$('#segmentacao .option-card').forEach((card) => {
+  // --- Nome ---
+  const qNome = $('#q-nome');
+  const btnNome = $('#btn-id-nome');
+
+  qNome.addEventListener('input', () => {
+    btnNome.disabled = qNome.value.trim().length < 3;
+  });
+
+  btnNome.addEventListener('click', () => {
+    state.answers.nome = qNome.value.trim();
+    showScreen('id-whatsapp');
+  });
+
+  // Allow Enter key on text inputs
+  qNome.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !btnNome.disabled) btnNome.click();
+  });
+
+  // --- WhatsApp ---
+  const qWhatsapp = $('#q-whatsapp');
+  const btnWhatsapp = $('#btn-id-whatsapp');
+
+  qWhatsapp.addEventListener('input', (e) => {
+    // Phone mask
+    let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length > 6) v = v.replace(/(\d{2})(\d{5})(\d{1,4})/, '($1) $2-$3');
+    else if (v.length > 2) v = v.replace(/(\d{2})(\d{1,5})/, '($1) $2');
+    e.target.value = v;
+
+    btnWhatsapp.disabled = v.replace(/\D/g, '').length < 10;
+  });
+
+  btnWhatsapp.addEventListener('click', () => {
+    state.answers.whatsapp = qWhatsapp.value.trim();
+    showScreen('id-cnh');
+  });
+
+  qWhatsapp.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !btnWhatsapp.disabled) btnWhatsapp.click();
+  });
+
+  // --- Depende da CNH ---
+  $$('#id-cnh .option-card').forEach((card) => {
     card.addEventListener('click', () => {
-      state.answers.recente = card.dataset.value;
-      // Highlight selection briefly
-      $$('#segmentacao .option-card').forEach((c) => c.classList.remove('selected'));
+      state.answers.dependeCNH = card.dataset.value;
+      $$('#id-cnh .option-card').forEach((c) => c.classList.remove('selected'));
+      card.classList.add('selected');
+      setTimeout(() => showScreen('id-alerta'), 350);
+    });
+  });
+
+  // --- Alerta Educativo ---
+  $('#btn-id-alerta').addEventListener('click', () => {
+    showScreen('id-proprietario');
+  });
+
+  // --- Proprietário ---
+  $$('#id-proprietario .option-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      state.answers.proprietario = card.dataset.value;
+      $$('#id-proprietario .option-card').forEach((c) => c.classList.remove('selected'));
+      card.classList.add('selected');
+      setTimeout(() => showScreen('id-condutor'), 350);
+    });
+  });
+
+  // --- Condutor ---
+  $$('#id-condutor .option-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      state.answers.condutor = card.dataset.value;
+      $$('#id-condutor .option-card').forEach((c) => c.classList.remove('selected'));
       card.classList.add('selected');
       setTimeout(() => showScreen('filtro'), 350);
     });
   });
+
+  // === BLOCO 2: TRIAGEM TÉCNICA ===
 
   // --- Filtro Crítico (Logic Jump) ---
   $$('#filtro .option-card').forEach((card) => {
@@ -99,19 +181,33 @@
         if (value === 'lei_seca' || value === 'carteira_suspensa') {
           showScreen('humano');
         } else {
-          showScreen('upload');
+          showScreen('segmentacao');
         }
       }, 350);
     });
   });
 
+  // --- Segmentação (30 dias) ---
+  $$('#segmentacao .option-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      state.answers.recente = card.dataset.value;
+      $$('#segmentacao .option-card').forEach((c) => c.classList.remove('selected'));
+      card.classList.add('selected');
+      setTimeout(() => showScreen('upload'), 350);
+    });
+  });
+
   // --- Caminho Humano ---
   $('#btn-whatsapp').addEventListener('click', () => {
+    const nome = state.answers.nome || '';
+    const whats = state.answers.whatsapp || '';
     const msg = encodeURIComponent(
-      'Olá! Fiz o teste no site da Caça Multas e meu caso foi identificado como complexo. Gostaria de falar com um especialista.'
+      `Olá! Meu nome é ${nome}. Fiz o teste no site da Caça Multas e meu caso foi identificado como complexo. Meu WhatsApp: ${whats}. Gostaria de falar com um especialista.`
     );
     window.open('https://wa.me/5511999999999?text=' + msg, '_blank');
   });
+
+  // === BLOCO 3: COLETA DE PROVA ===
 
   // --- Upload ---
   const uploadArea = $('#upload-area');
@@ -218,7 +314,23 @@
   // --- Oferta ---
   $('#btn-oferta').addEventListener('click', () => {
     showScreen('form');
+    // Pre-fill form with data already collected
+    prefillForm();
   });
+
+  // --- Pre-fill checkout form ---
+  function prefillForm() {
+    const nomeInput = document.getElementById('f-nome');
+    const telInput = document.getElementById('f-tel');
+
+    if (state.answers.nome && nomeInput && !nomeInput.value) {
+      nomeInput.value = state.answers.nome;
+    }
+
+    if (state.answers.whatsapp && telInput && !telInput.value) {
+      telInput.value = state.answers.whatsapp;
+    }
+  }
 
   // --- Form Validation & Submit ---
   $('#btn-submit-form').addEventListener('click', () => {
@@ -249,7 +361,6 @@
     });
 
     if (!valid) {
-      // Scroll to first error
       const firstErr = document.querySelector('.form-input.error');
       if (firstErr) firstErr.focus();
       return;
@@ -283,10 +394,10 @@
     });
   }
 
-  // --- Phone Mask ---
-  const telInput = document.getElementById('f-tel');
-  if (telInput) {
-    telInput.addEventListener('input', (e) => {
+  // --- Phone Mask (checkout) ---
+  const telInputForm = document.getElementById('f-tel');
+  if (telInputForm) {
+    telInputForm.addEventListener('input', (e) => {
       let v = e.target.value.replace(/\D/g, '').slice(0, 11);
       if (v.length > 6) v = v.replace(/(\d{2})(\d{5})(\d{1,4})/, '($1) $2-$3');
       else if (v.length > 2) v = v.replace(/(\d{2})(\d{1,5})/, '($1) $2');

@@ -57,33 +57,110 @@
 
         </section>
 
-        <!-- ========== TELA 2: SEGMENTAÇÃO ========== -->
-        <section id="segmentacao" class="screen question-screen">
+        <!-- ========== BLOCO 1: IDENTIFICAÇÃO ========== -->
 
-            <span class="question-label">Etapa 1 — Verificação</span>
-            <h2 class="question-title">Você recebeu a notificação oficial nos últimos 30 dias?</h2>
+        <!-- TELA 2: NOME -->
+        <section id="id-nome" class="screen question-screen">
+            <span class="question-label">Etapa 1 — Identificação</span>
+            <h2 class="question-title">Qual é o seu nome completo?</h2>
+
+            <div class="input-group">
+                <input class="form-input quiz-input" type="text" id="q-nome" placeholder="Digite seu nome completo"
+                    autocomplete="name" />
+            </div>
+
+            <button id="btn-id-nome" class="btn btn-primary" disabled>
+                <span class="btn-icon">→</span>
+                CONTINUAR
+            </button>
+        </section>
+
+        <!-- TELA 3: WHATSAPP -->
+        <section id="id-whatsapp" class="screen question-screen">
+            <span class="question-label">Etapa 2 — Contato</span>
+            <h2 class="question-title">Qual seu WhatsApp com DDD?</h2>
+
+            <div class="input-group">
+                <input class="form-input quiz-input" type="text" id="q-whatsapp" placeholder="(00) 00000-0000"
+                    inputmode="tel" />
+            </div>
+
+            <button id="btn-id-whatsapp" class="btn btn-primary" disabled>
+                <span class="btn-icon">→</span>
+                CONTINUAR
+            </button>
+        </section>
+
+        <!-- TELA 4: DEPENDE DA CNH -->
+        <section id="id-cnh" class="screen question-screen">
+            <span class="question-label">Etapa 3 — Perfil</span>
+            <h2 class="question-title">Você depende da sua CNH para trabalhar?</h2>
 
             <div class="options-list">
                 <button class="option-card" data-value="sim">
-                    <span class="option-icon">📩</span>
-                    <div>
-                        <div>Sim, recebi recentemente</div>
-                    </div>
+                    <span class="option-icon">✅</span>
+                    <div>Sim, dependo da CNH</div>
                 </button>
                 <button class="option-card" data-value="nao">
-                    <span class="option-icon">📆</span>
-                    <div>
-                        <div>Não, já faz mais tempo</div>
-                    </div>
+                    <span class="option-icon">❌</span>
+                    <div>Não, não dependo</div>
                 </button>
             </div>
-
         </section>
 
-        <!-- ========== TELA 3: FILTRO CRÍTICO ========== -->
-        <section id="filtro" class="screen question-screen">
+        <!-- TELA 5: ALERTA EDUCATIVO -->
+        <section id="id-alerta" class="screen question-screen alerta-screen">
+            <div class="alerta-icon">⚠️</div>
+            <h2 class="question-title" style="text-align:center;">Você sabia que pagar a multa agora confirma os pontos
+                e pode <strong style="color:var(--red);">suspender sua carteira</strong>?</h2>
+            <p class="alerta-text">Antes de pagar, verifique se há possibilidade de recurso. Continue para descobrir.
+            </p>
 
-            <span class="question-label">Etapa 2 — Tipo de Infração</span>
+            <button id="btn-id-alerta" class="btn btn-primary">
+                <span class="btn-icon">👉</span>
+                ENTENDI, CONTINUAR
+            </button>
+        </section>
+
+        <!-- TELA 6: PROPRIETÁRIO -->
+        <section id="id-proprietario" class="screen question-screen">
+            <span class="question-label">Etapa 4 — Veículo</span>
+            <h2 class="question-title">Você é o proprietário do veículo que foi multado?</h2>
+
+            <div class="options-list">
+                <button class="option-card" data-value="sim">
+                    <span class="option-icon">🚗</span>
+                    <div>Sim, sou o proprietário</div>
+                </button>
+                <button class="option-card" data-value="nao">
+                    <span class="option-icon">👤</span>
+                    <div>Não, o veículo é de outra pessoa</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- TELA 7: CONDUTOR -->
+        <section id="id-condutor" class="screen question-screen">
+            <span class="question-label">Etapa 5 — Condutor</span>
+            <h2 class="question-title">Você era o condutor no momento da infração?</h2>
+
+            <div class="options-list">
+                <button class="option-card" data-value="sim">
+                    <span class="option-icon">🙋</span>
+                    <div>Sim, eu estava dirigindo</div>
+                </button>
+                <button class="option-card" data-value="nao">
+                    <span class="option-icon">🔄</span>
+                    <div>Não, era outra pessoa</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========== BLOCO 2: TRIAGEM TÉCNICA ========== -->
+
+        <!-- TELA 8: FILTRO CRÍTICO (Logic Jump) -->
+        <section id="filtro" class="screen question-screen">
+            <span class="question-label">Etapa 6 — Tipo de Infração</span>
             <h2 class="question-title">Qual o motivo da infração?</h2>
 
             <div class="options-list">
@@ -113,6 +190,23 @@
                 </button>
             </div>
 
+        </section>
+
+        <!-- TELA 9: SEGMENTAÇÃO (Prazo) -->
+        <section id="segmentacao" class="screen question-screen">
+            <span class="question-label">Etapa 7 — Prazo</span>
+            <h2 class="question-title">Você recebeu a notificação oficial nos últimos 30 dias?</h2>
+
+            <div class="options-list">
+                <button class="option-card" data-value="sim">
+                    <span class="option-icon">📩</span>
+                    <div>Sim, recebi recentemente</div>
+                </button>
+                <button class="option-card" data-value="nao">
+                    <span class="option-icon">📆</span>
+                    <div>Não, já faz mais tempo</div>
+                </button>
+            </div>
         </section>
 
         <!-- ========== CAMINHO HUMANO ========== -->
