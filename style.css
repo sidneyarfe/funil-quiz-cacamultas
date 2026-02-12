@@ -769,6 +769,105 @@ input[type="file"] {
   margin-top: 4px;
 }
 
+/* --- Como Funciona Screen --- */
+.howit-screen {
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+
+.howit-steps {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 28px;
+}
+
+.howit-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.howit-step:nth-child(1) { animation-delay: 0.1s; }
+.howit-step:nth-child(3) { animation-delay: 0.25s; }
+.howit-step:nth-child(5) { animation-delay: 0.4s; }
+
+.howit-step-number {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin-top: 4px;
+  box-shadow: 0 3px 12px rgba(0, 193, 112, 0.3);
+}
+
+.howit-step-content {
+  flex: 1;
+  background: var(--gray-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.howit-step-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.howit-step-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.howit-step-text {
+  font-size: 0.84rem;
+  color: var(--gray-dark);
+  line-height: 1.55;
+}
+
+.howit-connector {
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--emerald), var(--gray-light));
+  margin-left: 17px;
+  border-radius: 2px;
+}
+
+.howit-trust {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.howit-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.howit-trust-item span {
+  font-size: 1.1rem;
+}
+
 /* --- Oferta Screen --- */
 .offer-screen {
   justify-content: flex-start;

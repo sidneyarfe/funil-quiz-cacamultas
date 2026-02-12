@@ -13,17 +13,18 @@
   };
 
   // Screen progression for automatic path
-  const autoFlow = ['hook', 'segmentacao', 'filtro', 'upload', 'scan', 'diagnostico', 'oferta', 'form', 'pagamento'];
+  const autoFlow = ['hook', 'segmentacao', 'filtro', 'upload', 'scan', 'diagnostico', 'comofunciona', 'oferta', 'form', 'pagamento'];
   const progressMap = {
     hook: 0,
-    segmentacao: 12,
-    filtro: 25,
-    humano: 40,
-    upload: 40,
-    scan: 55,
-    diagnostico: 70,
-    oferta: 80,
-    form: 90,
+    segmentacao: 10,
+    filtro: 20,
+    humano: 35,
+    upload: 35,
+    scan: 45,
+    diagnostico: 55,
+    comofunciona: 65,
+    oferta: 75,
+    form: 88,
     pagamento: 100,
   };
 
@@ -54,14 +55,15 @@
 
     const labels = {
       hook: 'Início',
-      segmentacao: 'Etapa 1 de 6',
-      filtro: 'Etapa 2 de 6',
+      segmentacao: 'Etapa 1 de 7',
+      filtro: 'Etapa 2 de 7',
       humano: 'Atendimento Especial',
-      upload: 'Etapa 3 de 6',
+      upload: 'Etapa 3 de 7',
       scan: 'Analisando...',
-      diagnostico: 'Etapa 4 de 6',
-      oferta: 'Etapa 5 de 6',
-      form: 'Etapa 6 de 6',
+      diagnostico: 'Etapa 4 de 7',
+      comofunciona: 'Etapa 5 de 7',
+      oferta: 'Etapa 6 de 7',
+      form: 'Etapa 7 de 7',
       pagamento: 'Finalização',
     };
 
@@ -205,6 +207,11 @@
 
   // --- Diagnóstico ---
   $('#btn-defesa').addEventListener('click', () => {
+    showScreen('comofunciona');
+  });
+
+  // --- Como Funciona ---
+  $('#btn-comofunciona').addEventListener('click', () => {
     showScreen('oferta');
   });
 
