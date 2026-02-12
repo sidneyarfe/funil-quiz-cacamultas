@@ -24,12 +24,14 @@
     'id-alerta': 48,
     'id-proprietario': 55,
     'id-condutor': 62,
-    'filtro': 70,
-    'humano': 72,
-    'segmentacao': 76,
-    'upload': 82,
-    'scan': 86,
-    'diagnostico': 89,
+    'filtro': 68,
+    'humano': 70,
+    'segmentacao': 72,
+    'upload': 76,
+    'scan': 80,
+    'diagnostico': 83,
+    'contestacao': 86,
+    'recurso': 89,
     'comofunciona': 92,
     'oferta': 95,
     'form': 97,
@@ -313,8 +315,18 @@
     }, 1200);
   }
 
-  // --- Diagnóstico ---
+  // --- Diagnóstico → Contestação ---
   $('#btn-defesa').addEventListener('click', () => {
+    showScreen('contestacao');
+  });
+
+  // --- Contestação → Recurso ---
+  $('#btn-contestacao').addEventListener('click', () => {
+    showScreen('recurso');
+  });
+
+  // --- Recurso → Como Funciona ---
+  $('#btn-recurso').addEventListener('click', () => {
     showScreen('comofunciona');
   });
 
