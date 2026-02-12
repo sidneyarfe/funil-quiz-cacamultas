@@ -445,64 +445,6 @@
     window.open('https://www.asaas.com/c/CHECKOUT_ID_AQUI', '_blank');
   });
 
-  // --- Social Proof Notifications (Pará) ---
-  const socialProofData = {
-    cities: ['Belém-PA', 'Ananindeua-PA', 'Marituba-PA', 'Castanhal-PA', 'Santarém-PA', 'Parauapebas-PA', 'Altamira-PA', 'Icoaraci-PA'],
-    names: ['Marcus', 'Junior', 'Ana', 'Carlos', 'Fernanda', 'Paulo', 'Ricardo', 'Luana', 'Beatriz', 'Felipe', 'Mariana', 'Roberto'],
-    uValues: ['130,16', '195,23', '293,47', '632,60', '880,41', '1.467,35'],
-  };
-
-  function showToast() {
-    const container = document.getElementById('toast-container');
-    if (!container) return;
-
-    // Randomize data
-    const city = socialProofData.cities[Math.floor(Math.random() * socialProofData.cities.length)];
-    const name = socialProofData.names[Math.floor(Math.random() * socialProofData.names.length)];
-    const isAnalysis = Math.random() > 0.4; // 60% chance of "enviou", 40% "anulou"
-
-    let text, icon, iconColor;
-
-    if (isAnalysis) {
-      text = `<strong>${name}</strong> de ${city} enviou uma multa para análise.`;
-      icon = '⚡';
-      iconColor = '#F59E0B'; // Amber
-    } else {
-      const val = socialProofData.uValues[Math.floor(Math.random() * socialProofData.uValues.length)];
-      text = `<strong>${name}</strong> de ${city} anulou uma multa de R$ ${val}.`;
-      icon = '✅';
-      iconColor = '#10B981'; // Emerald
-    }
-
-    // Create Toast
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.innerHTML = `
-      <span class="toast-icon" style="color: ${iconColor}">${icon}</span>
-      <span class="toast-content">${text}</span>
-      <span class="toast-time">agora</span>
-    `;
-
-    container.appendChild(toast);
-
-    // Remove after 5s
-    setTimeout(() => {
-      toast.classList.add('fade-out');
-      toast.addEventListener('animationend', () => {
-        toast.remove();
-      });
-    }, 5000);
-
-    // Schedule next
-    const delay = Math.floor(Math.random() * (15000 - 8000 + 1)) + 8000; // 8-15s
-    setTimeout(showToast, delay);
-  }
-
-  // Start loop 5s after load
-  setTimeout(showToast, 5000);
-
-
-
   // --- Init ---
   showScreen('hook');
 })();
