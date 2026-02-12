@@ -8,6 +8,7 @@
   // --- State ---
   const state = {
     currentScreen: 'hook',
+    screenHistory: [],
     answers: {},
     uploadedFile: null,
   };
@@ -40,9 +41,18 @@
   const $$ = (sel) => document.querySelectorAll(sel);
 
   const progressFill = $('.progress-bar-fill');
+  const btnBack = $('#btn-back');
+
+  // Screens where back is NOT allowed
+  const noBackScreens = ['hook', 'scan', 'pagamento'];
 
   // --- Navigation ---
   function showScreen(id) {
+    // Push current screen to history before navigating
+    if (state.currentScreen && state.currentScreen !== id) {
+      state.screenHistory.push(state.currentScreen);
+    }
+
     $$('.screen').forEach((s) => {
       s.classList.remove('active');
     });
@@ -51,9 +61,34 @@
       target.classList.add('active');
       state.currentScreen = id;
       updateProgress(id);
+      updateBackButton(id);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
+
+  function updateBackButton(screenId) {
+    if (noBackScreens.includes(screenId) || state.screenHistory.length === 0) {
+      btnBack.style.visibility = 'hidden';
+    } else {
+      btnBack.style.visibility = 'visible';
+    }
+  }
+
+  // --- Back Button ---
+  btnBack.addEventListener('click', () => {
+    if (state.screenHistory.length === 0) return;
+    const prevScreen = state.screenHistory.pop();
+    // Navigate without pushing to history again
+    $$('.screen').forEach((s) => s.classList.remove('active'));
+    const target = document.getElementById(prevScreen);
+    if (target) {
+      target.classList.add('active');
+      state.currentScreen = prevScreen;
+      updateProgress(prevScreen);
+      updateBackButton(prevScreen);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 
   function updateProgress(screenId) {
     const pct = progressMap[screenId] ?? 0;
