@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Verifique agora se sua multa pode ser anulada. Teste gratuito da Caça Multas." />
+  <title>Caça Multas — Verifique sua Multa</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ========== PROGRESS BAR ========== -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill"></div>
+    </div>
+    <div class="progress-info">
+      <span class="progress-step-text">Início</span>
+      <span class="progress-logo">CAÇA<span>MULTAS</span></span>
+    </div>
+  </div>
+
+  <!-- ========== TELA 1: HOOK ========== -->
+  <section id="hook" class="screen hook-screen active">
+
+    <div class="hook-badge">🔍 Verificador de Multas</div>
+
+    <div class="hook-icon">🛡️</div>
+
+    <h1 class="hook-headline">
+      <em>Não pague</em> sua multa antes de fazer este teste!
+    </h1>
+
+    <p class="hook-subheadline">
+      <strong>73% das multas</strong> aplicadas pelos órgãos de trânsito têm <strong>ALTAS CHANCES</strong> de ser anuladas. Faça o teste <strong>AGORA</strong> e veja se você pode <strong>ANULAR</strong> a sua.
+    </p>
+
+    <div class="hook-stats">
+      <div class="hook-stat">
+        <span class="hook-stat-number">73%</span>
+        <span class="hook-stat-label">Chances de Anulação</span>
+      </div>
+      <div class="hook-stat">
+        <span class="hook-stat-number">12k+</span>
+        <span class="hook-stat-label">Multas Analisadas</span>
+      </div>
+      <div class="hook-stat">
+        <span class="hook-stat-number">2min</span>
+        <span class="hook-stat-label">Tempo do Teste</span>
+      </div>
+    </div>
+
+    <button id="btn-start" class="btn btn-primary btn-pulse">
+      <span class="btn-icon">🔎</span>
+      VERIFICAR MINHA MULTA AGORA
+    </button>
+
+    <div class="footer" style="margin-top: 32px; border: none; padding-bottom: 0;">
+      <p class="footer-text">
+        🔒 Teste 100% gratuito e confidencial<br />
+        <strong>DOCUMENTA SERVIÇOS EMPRESARIAIS INTEGRADOS LTDA</strong><br />
+        CNPJ: 54.601.720/0001-31
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ========== TELA 2: SEGMENTAÇÃO ========== -->
+  <section id="segmentacao" class="screen question-screen">
+
+    <span class="question-label">Etapa 1 — Verificação</span>
+    <h2 class="question-title">Você recebeu a notificação oficial nos últimos 30 dias?</h2>
+    <p class="question-subtitle">Isso é importante para definir o prazo do seu recurso.</p>
+
+    <div class="options-list">
+      <button class="option-card" data-value="sim">
+        <span class="option-icon">📩</span>
+        <div>
+          <div>Sim, recebi recentemente</div>
+        </div>
+      </button>
+      <button class="option-card" data-value="nao">
+        <span class="option-icon">📆</span>
+        <div>
+          <div>Não, já faz mais tempo</div>
+        </div>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ========== TELA 3: FILTRO CRÍTICO ========== -->
+  <section id="filtro" class="screen question-screen">
+
+    <span class="question-label">Etapa 2 — Tipo de Infração</span>
+    <h2 class="question-title">Qual o motivo da infração que consta na notificação?</h2>
+    <p class="question-subtitle">Selecione a opção que melhor descreve sua multa.</p>
+
+    <div class="options-list">
+      <button class="option-card" data-value="lei_seca">
+        <span class="option-icon">🍺</span>
+        <div>Lei Seca / Bafômetro / Recusa</div>
+      </button>
+      <button class="option-card" data-value="carteira_suspensa">
+        <span class="option-icon">🚫</span>
+        <div>Carteira Suspensa ou Cassada</div>
+      </button>
+      <button class="option-card" data-value="velocidade">
+        <span class="option-icon">⚡</span>
+        <div>Excesso de Velocidade / Radar</div>
+      </button>
+      <button class="option-card" data-value="sinal_vermelho">
+        <span class="option-icon">🔴</span>
+        <div>Avanço de Sinal Vermelho</div>
+      </button>
+      <button class="option-card" data-value="celular">
+        <span class="option-icon">📱</span>
+        <div>Uso de Celular ao Volante</div>
+      </button>
+      <button class="option-card" data-value="estacionamento">
+        <span class="option-icon">🅿️</span>
+        <div>Estacionamento / Outros</div>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ========== CAMINHO HUMANO ========== -->
+  <section id="humano" class="screen human-screen">
+
+    <div class="human-alert-icon">⚠️</div>
+
+    <h2 class="human-title">Atenção: Seu caso exige cuidado especial.</h2>
+
+    <p class="human-text">
+      Infrações de <strong>Lei Seca</strong> ou <strong>Suspensão/Cassação da CNH</strong> possuem riscos jurídicos graves. Por isso, você será atendido agora por um de nossos <strong>especialistas humanos</strong> para uma análise personalizada.
+    </p>
+
+    <div class="human-features">
+      <div class="human-feature">
+        <span class="human-feature-icon">👨‍⚖️</span>
+        Análise jurídica personalizada
+      </div>
+      <div class="human-feature">
+        <span class="human-feature-icon">⏱️</span>
+        Atendimento imediato
+      </div>
+      <div class="human-feature">
+        <span class="human-feature-icon">🔒</span>
+        100% confidencial
+      </div>
+    </div>
+
+    <a id="btn-whatsapp" class="btn btn-whatsapp" href="javascript:void(0)">
+      <span class="btn-icon">💬</span>
+      FALAR COM ESPECIALISTA NO WHATSAPP
+    </a>
+
+  </section>
+
+  <!-- ========== TELA 4: UPLOAD ========== -->
+  <section id="upload" class="screen upload-screen">
+
+    <span class="question-label">Etapa 3 — Envio da Multa</span>
+    <h2 class="question-title">Tire uma foto nítida da sua multa ou faça o upload.</h2>
+    <p class="question-subtitle">Aceitos: Fotos (JPG, PNG) e documentos (PDF).</p>
+
+    <div id="upload-area" class="upload-area">
+      <div class="upload-default">
+        <span class="upload-icon">📤</span>
+        <p class="upload-text">Toque aqui para enviar</p>
+        <p class="upload-subtext">ou arraste o arquivo</p>
+      </div>
+      <div class="upload-preview">
+        <img id="preview-img" src="" alt="Preview" />
+        <span id="preview-name" class="upload-filename"></span>
+        <span class="upload-change">Trocar arquivo</span>
+      </div>
+    </div>
+
+    <input type="file" id="file-input" accept="image/*,.pdf" />
+
+    <button id="btn-analyze" class="btn btn-primary" style="display:none;">
+      <span class="btn-icon">🔬</span>
+      ANALISAR MINHA MULTA
+    </button>
+
+  </section>
+
+  <!-- ========== TELA 5: SCAN (LOADING) ========== -->
+  <section id="scan" class="screen scan-screen">
+
+    <div class="scan-animation">
+      <div class="scan-ring"></div>
+      <div class="scan-ring"></div>
+      <div class="scan-ring"></div>
+      <div class="scan-center-icon">🔍</div>
+    </div>
+
+    <h2 class="scan-title">Analisando sua multa...</h2>
+    <p id="scan-message" class="scan-message">Conectando ao banco de dados do CTB...</p>
+
+    <div class="scan-dots">
+      <span class="scan-dot"></span>
+      <span class="scan-dot"></span>
+      <span class="scan-dot"></span>
+      <span class="scan-dot"></span>
+      <span class="scan-dot"></span>
+    </div>
+
+  </section>
+
+  <!-- ========== TELA 6: DIAGNÓSTICO ========== -->
+  <section id="diagnostico" class="screen result-screen">
+
+    <div class="result-badge">✅ Análise Concluída</div>
+
+    <div class="result-icon">✅</div>
+
+    <h2 class="result-title">
+      Resultado: <span class="result-highlight">ALTA PROBABILIDADE</span> DE DEFESA DETECTADA!
+    </h2>
+
+    <p class="result-text">
+      Nossa análise identificou <strong>inconsistências técnicas</strong> na sua notificação. Recorrer é a melhor estratégia para <strong>congelar seus pontos</strong> e evitar o pagamento indevido.
+    </p>
+
+    <div class="result-metrics">
+      <div class="result-metric">
+        <span class="result-metric-value">92%</span>
+        <span class="result-metric-label">Chance de Defesa</span>
+      </div>
+      <div class="result-metric">
+        <span class="result-metric-value">3</span>
+        <span class="result-metric-label">Erros Detectados</span>
+      </div>
+      <div class="result-metric">
+        <span class="result-metric-value">7pts</span>
+        <span class="result-metric-label">Pontos em Risco</span>
+      </div>
+    </div>
+
+    <button id="btn-defesa" class="btn btn-primary btn-pulse">
+      <span class="btn-icon">🛡️</span>
+      QUERO MINHA DEFESA AGORA
+    </button>
+
+  </section>
+
+  <!-- ========== TELA 7: OFERTA ========== -->
+  <section id="oferta" class="screen offer-screen">
+
+    <div class="offer-card">
+      <span class="offer-tag">🔥 Oferta Especial</span>
+      <h2 class="offer-title">Recurso Administrativo Personalizado + Guia de Protocolo</h2>
+      <p class="offer-desc">Defesa técnica completa com base nas inconsistências encontradas na sua multa.</p>
+      <div class="offer-price-block">
+        <div class="offer-price-old">De R$ 250,00</div>
+        <div class="offer-price-new">R$ 50,00 <small>taxa única</small></div>
+      </div>
+    </div>
+
+    <div class="offer-benefits">
+      <div class="offer-benefit">
+        <div class="offer-benefit-icon">📄</div>
+        <div>
+          <div class="offer-benefit-text">Defesa Técnica Profissional</div>
+          <div class="offer-benefit-sub">Recurso elaborado por especialistas em trânsito</div>
+        </div>
+      </div>
+      <div class="offer-benefit">
+        <div class="offer-benefit-icon">💰</div>
+        <div>
+          <div class="offer-benefit-text">Economia Real</div>
+          <div class="offer-benefit-sub">Evite pagar multas indevidas de até R$ 2.934,00</div>
+        </div>
+      </div>
+      <div class="offer-benefit">
+        <div class="offer-benefit-icon">🛡️</div>
+        <div>
+          <div class="offer-benefit-text">Proteção da CNH</div>
+          <div class="offer-benefit-sub">Congele seus pontos e proteja sua habilitação</div>
+        </div>
+      </div>
+    </div>
+
+    <button id="btn-oferta" class="btn btn-primary btn-pulse">
+      <span class="btn-icon">🚀</span>
+      GARANTIR MINHA DEFESA POR R$50
+    </button>
+
+    <div class="offer-guarantee">
+      🔒 Pagamento seguro · Dados protegidos pela LGPD
+    </div>
+
+  </section>
+
+  <!-- ========== TELA 8: FORMULÁRIO ========== -->
+  <section id="form" class="screen form-screen">
+
+    <div class="form-header">
+      <h2 class="form-title">Preencha seus dados</h2>
+      <p class="form-subtitle">Necessário para elaborar seu recurso personalizado.</p>
+    </div>
+
+    <!-- Dados Pessoais -->
+    <div class="form-section">
+      <div class="form-section-label">👤 Dados Pessoais</div>
+
+      <div class="form-group">
+        <label class="form-label" for="f-nome">Nome Completo</label>
+        <input class="form-input" type="text" id="f-nome" placeholder="Seu nome completo" autocomplete="name" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="f-cpf">CPF</label>
+          <input class="form-input" type="text" id="f-cpf" placeholder="000.000.000-00" inputmode="numeric" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-rg">RG</label>
+          <input class="form-input" type="text" id="f-rg" placeholder="Seu RG" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Contato -->
+    <div class="form-section">
+      <div class="form-section-label">📞 Contato</div>
+
+      <div class="form-group">
+        <label class="form-label" for="f-email">E-mail</label>
+        <input class="form-input" type="email" id="f-email" placeholder="seu@email.com" autocomplete="email" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="f-tel">Telefone</label>
+        <input class="form-input" type="text" id="f-tel" placeholder="(00) 00000-0000" inputmode="tel" autocomplete="tel" />
+      </div>
+    </div>
+
+    <!-- Endereço -->
+    <div class="form-section">
+      <div class="form-section-label">📍 Endereço</div>
+
+      <div class="form-group">
+        <label class="form-label" for="f-rua">Rua</label>
+        <input class="form-input" type="text" id="f-rua" placeholder="Nome da rua" autocomplete="street-address" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="f-num">Número</label>
+          <input class="form-input" type="text" id="f-num" placeholder="Nº" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-bairro">Bairro</label>
+          <input class="form-input" type="text" id="f-bairro" placeholder="Bairro" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="f-cidade">Cidade</label>
+          <input class="form-input" type="text" id="f-cidade" placeholder="Cidade" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-uf">UF</label>
+          <input class="form-input" type="text" id="f-uf" placeholder="SP" maxlength="2" style="text-transform:uppercase" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="f-cep">CEP</label>
+        <input class="form-input" type="text" id="f-cep" placeholder="00000-000" inputmode="numeric" />
+      </div>
+    </div>
+
+    <button id="btn-submit-form" class="btn btn-primary">
+      <span class="btn-icon">✅</span>
+      FINALIZAR E IR PARA PAGAMENTO
+    </button>
+
+    <div class="footer">
+      <p class="footer-text">🔒 Seus dados estão seguros. Atuamos em conformidade total com a <strong>LGPD</strong>.</p>
+    </div>
+
+  </section>
+
+  <!-- ========== TELA 9: PAGAMENTO ========== -->
+  <section id="pagamento" class="screen payment-screen">
+
+    <div class="payment-icon">💳</div>
+
+    <h2 class="payment-title">Quase lá!</h2>
+    <p class="payment-subtitle">Confirme o pagamento para receber seu recurso.</p>
+
+    <div class="payment-summary">
+      <div class="payment-summary-row">
+        <span>Recurso Administrativo</span>
+        <span>R$ 250,00</span>
+      </div>
+      <div class="payment-summary-row">
+        <span>Desconto Especial</span>
+        <span style="color: var(--emerald); font-weight: 600;">-R$ 200,00</span>
+      </div>
+      <div class="payment-summary-row total">
+        <span>Total</span>
+        <span class="payment-summary-value">R$ 50,00</span>
+      </div>
+    </div>
+
+    <div class="payment-methods">
+      <div class="payment-method">
+        <span class="payment-method-icon">📱</span>
+        PIX
+      </div>
+      <div class="payment-method">
+        <span class="payment-method-icon">💳</span>
+        Cartão
+      </div>
+    </div>
+
+    <button id="btn-pagar" class="btn btn-primary btn-pulse">
+      <span class="btn-icon">🔒</span>
+      PAGAR R$ 50,00 VIA PIX/CARTÃO
+    </button>
+
+    <div class="payment-secure">
+      🔐 Pagamento processado pelo Asaas · Ambiente 100% seguro
+    </div>
+
+    <div class="footer" style="margin-top: 28px;">
+      <p class="footer-text">
+        Seus dados estão seguros. Atuamos em conformidade total com a <strong>LGPD</strong>.<br /><br />
+        <strong>DOCUMENTA SERVIÇOS EMPRESARIAIS INTEGRADOS LTDA</strong><br />
+        CNPJ: 54.601.720/0001-31
+      </p>
+    </div>
+
+  </section>
+
+</div><!-- /.app -->
+
+<script src="script.js"></script>
+</body>
+</html>
