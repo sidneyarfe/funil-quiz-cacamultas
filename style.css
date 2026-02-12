@@ -114,10 +114,12 @@ body {
 }
 
 .progress-info {
-    display: grid;
-    grid-template-columns: 40px 1fr 40px;
+    position: relative;
+    display: flex;
     align-items: center;
+    justify-content: flex-start;
     padding: 10px 16px;
+    height: 56px;
 }
 
 .btn-back {
@@ -135,6 +137,7 @@ body {
     transition: all var(--transition);
     font-family: 'Inter', sans-serif;
     font-weight: 600;
+    z-index: 10;
 }
 
 .btn-back:hover {
@@ -143,11 +146,17 @@ body {
 }
 
 .progress-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 0.85rem;
     font-weight: 800;
     color: var(--navy);
     letter-spacing: -0.5px;
+    white-space: nowrap;
 }
+
+
 
 .progress-logo span {
     color: var(--emerald);
