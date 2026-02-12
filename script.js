@@ -40,7 +40,6 @@
   const $$ = (sel) => document.querySelectorAll(sel);
 
   const progressFill = $('.progress-bar-fill');
-  const progressText = $('.progress-step-text');
 
   // --- Navigation ---
   function showScreen(id) {
@@ -59,28 +58,6 @@
   function updateProgress(screenId) {
     const pct = progressMap[screenId] ?? 0;
     progressFill.style.width = pct + '%';
-
-    const labels = {
-      'hook': '',
-      'id-nome': 'Identificação',
-      'id-whatsapp': 'Contato',
-      'id-cnh': 'Perfil',
-      'id-alerta': 'Importante',
-      'id-proprietario': 'Veículo',
-      'id-condutor': 'Condutor',
-      'filtro': 'Infração',
-      'humano': 'Atendimento Especial',
-      'segmentacao': 'Prazo',
-      'upload': 'Envio',
-      'scan': 'Analisando...',
-      'diagnostico': 'Resultado',
-      'comofunciona': 'Seu Recurso',
-      'oferta': 'Oferta Especial',
-      'form': 'Seus Dados',
-      'pagamento': 'Finalização',
-    };
-
-    progressText.textContent = labels[screenId] || '';
   }
 
   // === BLOCO 1: IDENTIFICAÇÃO ===

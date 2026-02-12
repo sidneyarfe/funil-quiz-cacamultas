@@ -115,17 +115,9 @@ body {
 
 .progress-info {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px 20px;
-}
-
-.progress-step-text {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--gray-text);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
 }
 
 .progress-logo {
